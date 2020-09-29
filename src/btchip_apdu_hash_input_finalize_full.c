@@ -200,7 +200,7 @@ static bool handle_output_state() {
 
         discardSize += 8 + scriptSize;
 
-#ifdef HAVE_PART_SUPPORT
+#ifdef HAVE_CPS_SUPPORT
         if (!btchip_context_D.segwitParsedOnce)
         {
             // No amount on data output
@@ -338,7 +338,7 @@ unsigned short btchip_apdu_hash_input_finalize_full_internal(
             // given data
             // For SegWit, this has been reset to hold hashOutputs
             if (!btchip_context_D.segwitParsedOnce) {
-#ifdef HAVE_PART_SUPPORT
+#ifdef HAVE_CPS_SUPPORT
 
 #else
                 cx_hash(&btchip_context_D.transactionHashFull.header, 0,
@@ -362,6 +362,7 @@ unsigned short btchip_apdu_hash_input_finalize_full_internal(
                 // Check if the legacy UI can be applied
                 if (!(G_coin_config->kind == COIN_KIND_QTUM) &&
                     !(G_coin_config->kind == COIN_KIND_PARTICL) &&
+                    !(G_coin_config->kind == COIN_KIND_CAPRICOINPLUS) &&
                     (G_io_apdu_buffer[ISO_OFFSET_P1] == FINALIZE_P1_LAST) &&
                     !btchip_context_D.tmpCtx.output.multipleOutput &&
                     prepare_full_output(1)) {

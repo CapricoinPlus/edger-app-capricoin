@@ -1,1 +1,1 @@
-# ledger-app-particl
+# ledger-app-capricoinplus

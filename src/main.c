@@ -2306,7 +2306,7 @@ uint8_t prepare_single_output() {
     offset += 8;
     nativeSegwit = btchip_output_script_is_native_witness(
         btchip_context_D.currentOutput + offset);
-#ifdef HAVE_PART_SUPPORT
+#ifdef HAVE_CPS_SUPPORT
     bool amountZero = true;
     for (size_t k = 0; k < 8; ++k) {
         if (amount[k] == 0) {
@@ -2320,7 +2320,7 @@ uint8_t prepare_single_output() {
     } else
     if (btchip_output_script_is_256_hash(btchip_context_D.currentOutput +
                                          offset)) {
-        version = PART_PKADDR256_V;
+        version = CPS_PKADDR256_V;
         versionSize = 1;
         addressOffset = offset + 4;
         address[0] = version;
@@ -2355,7 +2355,7 @@ uint8_t prepare_single_output() {
         strncat(vars.tmp.fullAddress, tmp+textSize-5, 5);
         strcat(vars.tmp.fullAddress, " / SPD ");
 
-        version = PART_PKADDR256_V;
+        version = CPS_PKADDR256_V;
         versionSize = 1;
         addressOffset += 26;
         address[0] = version;

@@ -20,7 +20,7 @@
 
 #define SIGHASH_ALL 0x01
 
-#ifdef HAVE_PART_SUPPORT
+#ifdef HAVE_CPS_SUPPORT
 static const unsigned char order[32] = {
     0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
     0xff, 0xff, 0xff, 0xfe, 0xba, 0xae, 0xdc, 0xe6, 0xaf, 0x48, 0xa0, 0x3b,
@@ -41,7 +41,7 @@ unsigned short btchip_apdu_hash_sign() {
     unsigned short sw;
     unsigned char keyPath[MAX_BIP32_PATH_LENGTH];
     cx_sha256_t localHash;
-#ifdef HAVE_PART_SUPPORT
+#ifdef HAVE_CPS_SUPPORT
     unsigned char lenSharedSecret;
 #endif
 
@@ -125,7 +125,7 @@ unsigned short btchip_apdu_hash_sign() {
             // TODO optional : check the public key against the associated non
             // blank input to sign
 
-#ifdef HAVE_PART_SUPPORT
+#ifdef HAVE_CPS_SUPPORT
             lenSharedSecret = *(parameters++);
             if (lenSharedSecret == 32)
             {

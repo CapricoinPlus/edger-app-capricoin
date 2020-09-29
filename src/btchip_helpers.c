@@ -138,7 +138,7 @@ unsigned char btchip_output_script_is_op_call(unsigned char *buffer) {
             (buffer[buffer[0]] == 0xC2));
 }
 
-#ifdef HAVE_PART_SUPPORT
+#ifdef HAVE_CPS_SUPPORT
 unsigned char btchip_output_script_is_coldstake(unsigned char *buffer) {
     static const unsigned char OP_ISCOINSTAKE = 0xb8;
     static const unsigned char OP_HASH160 = 0xa9;
@@ -306,7 +306,7 @@ unsigned short btchip_public_key_to_encoded_base58(
     return outputLen;
 }
 
-#ifdef HAVE_PART_SUPPORT
+#ifdef HAVE_CPS_SUPPORT
 unsigned short btchip_pk256_to_encoded_base58(
     unsigned char *in, unsigned short inlen, unsigned char *out,
     unsigned short outlen, unsigned short version,
